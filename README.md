@@ -1,6 +1,6 @@
 # Slides
 
-**Public** repository that contains all slides that were given for polygl0ts presentations. All presentations must be saved both in editable form and as a pdf.
+**Public** repository that contains all slides and recordings that were given for polygl0ts presentations. All presentations must be saved both in editable form and as a pdf.
 
 ## Folder structure
 
@@ -10,11 +10,11 @@ Follow this template:
 
 + 2025-2026-spring
   + fridays
-    + lesson0
-      + what_are_ctfs.tex
-      + what_are_ctfs.pdf
+    + day1
+      + intro.tex
+      + intro.pdf
       + Makefile
-    + lesson1
+    + day2
       + intro2pwn.pptx
       + intro2pwn.pdf
     + ...
@@ -22,3 +22,4 @@ Follow this template:
   + ...
 + ...
 
+If the original document is hosted as a Google Slide, after saving it here, put the link in the appropriate OUTLINKS.md . Recordings can be large, so they must be uploaded to youtube and linked to via OUTLINKS.md .
