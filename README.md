@@ -10,11 +10,11 @@ Follow this template:
 
 + 2025-2026-spring
   + fridays
-    + day1
+    + week1
       + intro.tex
       + intro.pdf
       + Makefile
-    + day2
+    + week2
       + intro2pwn.pptx
       + intro2pwn.pdf
     + ...
