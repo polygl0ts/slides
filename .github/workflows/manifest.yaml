@@ -1,0 +1,54 @@
+# .github/workflows/manifest.yaml
+
+# Rebuilds decks.json whenever a deck (or the build script) changes, and
+# commits it back.
+name: Build deck manifest
+
+on:
+  push:
+    branches: [main, feature/**]
+    paths:
+      - "decks/**"
+      - "scripts/**"
+      - ".github/workflows/manifest.yaml"
+  workflow_dispatch:
+
+# The commit-back needs write;
+permissions:
+  contents: write
+
+# A second push while this runs must not race the first one's commit-back.
+concurrency:
+  group: manifest
+  cancel-in-progress: false
+
+jobs:
+  manifest:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Setup python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: scripts/requirements.txt
+
+      - run: pip install -r scripts/requirements.txt
+
+      - name: Build decks.json
+        run: python scripts/build_manifest.py
+
+      - name: Commit manifest
+        run: |
+          if git diff --quiet -- decks.json; then
+            echo "decks.json unchanged, nothing to commit"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add decks.json
+          git commit -m "manifest: rebuild for ${GITHUB_SHA::7}"
+          git push
