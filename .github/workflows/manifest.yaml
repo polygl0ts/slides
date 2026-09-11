@@ -43,7 +43,8 @@ jobs:
 
       - name: Commit manifest
         run: |
-          if git diff --quiet -- decks.json; then
+          git add decks.json
+          if git diff --cached --quiet; then
             echo "decks.json unchanged, nothing to commit"
             exit 0
           fi
