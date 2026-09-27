@@ -25,7 +25,7 @@ to track it. You can do it like so:
 # -f null /dev/null     no video output needed
 ffmpeg -y -i input.mp4 -c:v libx264 -preset slow -b:v 270k -r 30 -pass 1 -an -f null /dev/null
 
-# Second pass, compress the video with the starts we just calculated
+# Second pass, compress the video with the stats we just calculated
 # -pass 2               actually do the compression
 # -c:a aac              encode the audio as AAC
 # -b:a 64k              use 64 kbps for audio
