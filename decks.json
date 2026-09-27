@@ -1,5 +1,13 @@
 [
   {
+    "id": "2026-09-25-intro2pwn",
+    "title": "Intro2pwn",
+    "date": "2026-09-25",
+    "file": "decks/2026-09-25-intro2pwn.pdf",
+    "pages": 27,
+    "size_bytes": 1192087
+  },
+  {
     "id": "2026-09-17-intro2rev",
     "title": "Intro2rev",
     "date": "2026-09-17",
