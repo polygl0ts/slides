@@ -18,10 +18,12 @@ MANIFEST = REPO_ROOT / "decks.json"
 
 # GitHub warns past 50 MB and refuses past 100 MB
 MAX_BYTES = 50 * 1024 * 1024
+MAX_RECORDING_BYTES = 100 * 1024 * 1024
 
 FILENAME = re.compile(
     r"^(?P<date>\d{4}-\d{2}-\d{2})-(?P<slug>[a-z0-9]+(?:-[a-z0-9]+)*)\.pdf$"
 )
+RECORDING_SUFFIX = "-recording.mp4"
 
 
 def title_from_slug(slug: str) -> str:
@@ -70,13 +72,31 @@ def build() -> list[dict[str, object]]:
 
     errors: list[str] = []
     decks: list[dict[str, object]] = []
+    recordings: dict[str, Path] = {}
     for path in sorted(DECKS_DIR.iterdir()):
         if path.name.startswith(".") or not path.is_file():
+            continue
+        if path.name.endswith(RECORDING_SUFFIX):
+            recordings[path.name.removesuffix(RECORDING_SUFFIX)] = path
             continue
         try:
             decks.append(describe(path))
         except ValueError as exc:
             errors.append(str(exc))
+
+    by_id = {str(deck["id"]): deck for deck in decks}
+    for deck_id, path in recordings.items():
+        if deck_id not in by_id:
+            errors.append(f"{path.name}: no {deck_id}.pdf next to it")
+            continue
+        size = path.stat().st_size
+        if size > MAX_RECORDING_BYTES:
+            errors.append(
+                f"{path.name}: {size / 1024 / 1024:.1f} MB is over the "
+                f"{MAX_RECORDING_BYTES // 1024 // 1024} MB limit, see README.md to compress it"
+            )
+            continue
+        by_id[deck_id]["recording"] = path.relative_to(REPO_ROOT).as_posix()
 
     if errors:
         raise ValueError("\n".join(errors))

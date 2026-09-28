@@ -5,7 +5,8 @@
     "date": "2026-09-25",
     "file": "decks/2026-09-25-intro2pwn.pdf",
     "pages": 27,
-    "size_bytes": 1192087
+    "size_bytes": 1192087,
+    "recording": "decks/2026-09-25-intro2pwn-recording.mp4"
   },
   {
     "id": "2026-09-17-intro2rev",

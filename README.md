@@ -2,11 +2,11 @@
 
 **Public** repository that contains all slides and recordings that were given for polygl0ts presentations.
 
+Available on https://friday.polygl0ts.ch/slides/ as well.
+
 ## Folder structure
 
-Push any slides deck into the `decks/` folder.
-Slides deck should have the following naming convention: 
-YYYY-MM-DD-title.pdf
+For a given presentation put the pdf in `desc/` as `YYYY-MM-DD-title.pdf` and the recording as `YYYY-MM-DD-title-recording.mp4`. 
 
 ## Video Encoding
 
