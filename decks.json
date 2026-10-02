@@ -1,5 +1,13 @@
 [
   {
+    "id": "2026-10-02-client-side-web-exploitation",
+    "title": "Client Side Web Exploitation",
+    "date": "2026-10-02",
+    "file": "decks/2026-10-02-client-side-web-exploitation.pdf",
+    "pages": 23,
+    "size_bytes": 157215
+  },
+  {
     "id": "2026-09-25-intro2pwn",
     "title": "Intro2pwn",
     "date": "2026-09-25",
