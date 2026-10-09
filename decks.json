@@ -1,5 +1,13 @@
 [
   {
+    "id": "2026-10-09-intro2crypto",
+    "title": "Intro2crypto",
+    "date": "2026-10-09",
+    "file": "decks/2026-10-09-intro2crypto.pdf",
+    "pages": 35,
+    "size_bytes": 1146924
+  },
+  {
     "id": "2026-10-02-client-side-web-exploitation",
     "title": "Client Side Web Exploitation",
     "date": "2026-10-02",
